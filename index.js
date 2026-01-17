@@ -1,12 +1,12 @@
 let express=require('express');
 let mongoose=require('mongoose');
-const { router } = require('./App/routes/common_routes');
+const router = require('./App/routes/common_routes');
 require('dotenv').config();
 let app = express();
 app.use(express.json());
 
 //Routes
-app.use('/api/', router);
+app.use('/api', router);
 
 
 //Connect to MongoDB

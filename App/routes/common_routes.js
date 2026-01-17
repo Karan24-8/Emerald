@@ -1,9 +1,13 @@
-const express = require("express");
-const app = express();
+let express = require("express");
+let router = express.Router();
+router.use(express.json()); // IMPORTANT: parse JSON body
 
-app.use(express.json()); // IMPORTANT: parse JSON body
+router.get("/", (req, res) => {
+    res.send("API router is working");
+});
 
-app.post("/api/prompt", (req, res) => {
+
+router.post("/prompt", (req, res) => {
     const data = req.body;  // JSON from frontend
 
     console.log("Received Prompt:", data.prompt);
@@ -15,4 +19,4 @@ app.post("/api/prompt", (req, res) => {
     });
 });
 
-app.listen(3000, () => console.log("Server running on port 3000"));
+module.exports = router;
