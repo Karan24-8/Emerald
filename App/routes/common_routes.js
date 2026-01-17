@@ -7,7 +7,7 @@ router.get("/", (req, res) => {
 });
 
 
-router.post("/prompt", (req, res) => {
+router.post('/prompt', (req, res) => {
     const data = req.body;  // JSON from frontend
 
     console.log("Received Prompt:", data.prompt);
