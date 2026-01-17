@@ -8,15 +8,20 @@ router.get("/", (req, res) => {
 
 
 router.post('/prompt', (req, res) => {
-    const data = req.body;  // JSON from frontend
+    const { user_input, tasks } = req.body;
 
-    console.log("Received Prompt:", data.prompt);
+    console.log("User Input:", user_input);
+    console.log("Tasks:", tasks);
 
     res.json({
         status: "success",
         message: "Prompt received",
-        received: data
+        received: {
+            user_input,
+            tasks
+        }
     });
 });
+
 
 module.exports = router;
