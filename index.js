@@ -1,8 +1,12 @@
 let express=require('express');
 let mongoose=require('mongoose');
+const { router } = require('./App/routes/common_routes');
 require('dotenv').config();
 let app = express();
 app.use(express.json());
+
+//Routes
+app.use('/api/', router);
 
 
 //Connect to MongoDB
@@ -12,5 +16,7 @@ mongoose.connect(process.env.DBURL).then(() => {
         console.log('Server is running');
     })
 }).catch((err) => {
+    console.log("MongoDB Connection failed");
     console.log(err);
+    process.exit(1);
 })
